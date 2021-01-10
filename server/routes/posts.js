@@ -1,10 +1,10 @@
-const express = require('express');
+import express from 'express';
+import { getPost, createPost } from '../controllers/posts.js';
 
 const router = express.Router();
 
-// Les posts seront disponibles sur http://localhost/5000/posts 
-router.get('/', (req, res) => {
-    res.send('This works');
-});
+// Les posts seront disponibles sur http://localhost:5000/posts 
+router.get('/', getPost);
+router.post('/', createPost);
 
-module.exports.router;
+export default router;

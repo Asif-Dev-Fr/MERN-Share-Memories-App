@@ -2,7 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
-require('dotenv').config();
+import dotenv from 'dotenv'
 
 // Routes :
 import postRoutes from './routes/posts.js';
@@ -11,7 +11,7 @@ import postRoutes from './routes/posts.js';
 
 const app = express();
 
-// Les posts seront disponibles sur http://localhost/5000/posts
+// Les posts seront disponibles sur http://localhost:5000/posts
 app.use('/posts', postRoutes);
 
 app.use(bodyParser.json( { limit: "30mb", extended: true } ));
