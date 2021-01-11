@@ -11,12 +11,12 @@ import postRoutes from './routes/posts.js';
 
 const app = express();
 
-// Les posts seront disponibles sur http://localhost:5000/posts
-app.use('/posts', postRoutes);
-
 app.use(bodyParser.json( { limit: "30mb", extended: true } ));
 app.use(bodyParser.urlencoded( { limit: "30mb", extended: true } ));
 app.use(cors());
+
+// Les posts seront disponibles sur http://localhost:5000/posts
+app.use('/posts', postRoutes);
 
 const CONNECTION_URL = "mongodb://127.0.0.1:27017/share_memories";
 const PORT = process.env.PORT || 5000; 
