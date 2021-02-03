@@ -14,11 +14,12 @@ const app = express();
 app.use(bodyParser.json( { limit: "30mb", extended: true } ));
 app.use(bodyParser.urlencoded( { limit: "30mb", extended: true } ));
 app.use(cors());
+dotenv.config({ path: './../.env'});
 
 // Les posts seront disponibles sur http://localhost:5000/posts
 app.use('/posts', postRoutes);
 
-const CONNECTION_URL = "mongodb://127.0.0.1:27017/share_memories";
+const CONNECTION_URL = process.env.DB_URL;
 const PORT = process.env.PORT || 5000; 
 
 mongoose.connect(CONNECTION_URL, {
