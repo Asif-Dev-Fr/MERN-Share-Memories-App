@@ -5,8 +5,6 @@ import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { createPost } from '../../actions/posts';
 
-
-
 const Form = () => {
 
     const [postData, setPostData] = useState({
@@ -15,7 +13,7 @@ const Form = () => {
         message: '',
         tags: '',
         selectedFile: ''
-    })
+    });
 
     const classes = useStyles();
     const dispatch = useDispatch();
@@ -24,13 +22,11 @@ const Form = () => {
         e.preventDefault()
 
         dispatch(createPost(postData));
-    }
+    };
 
     const clear = () => {
 
-    }
-
-
+    };
 
     return(
         <Paper className={classes.paper}>
@@ -72,6 +68,7 @@ const Form = () => {
                 <div className={classes.fileInput}>
                     <FileBase
                         type='file' 
+                        // set multiple to true if you are going to send several files 
                         multiple={false}
                         onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })}
                     />
